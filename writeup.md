@@ -30,7 +30,7 @@ The supplied test_images folder contains six images. I first draw_boxes routine 
 
 ### Heatmap and Bounding Boxes
 The sliding window and perspective_windows search identified the positions of positive detections and appended them to hot_windows for each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  Please see cell 15 which shows the pipeline visualization for all test images. 
-An example of for test6.jpg is also shown here: ![Alt text](writeup_images/pipeline_stages.jpg "test image 6 pipeline stages")
+An example of for test6.jpg is also shown here: ![Alt text](writeup_images/pipeline_stages.png "test image 6 pipeline stages")
 
 ### Video Implementation
 The output videos can be found here: 
