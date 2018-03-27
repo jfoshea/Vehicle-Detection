@@ -13,7 +13,7 @@ The goals / steps of this project are the following:
 - Create a pipeline to video stream generation
 - Run the pipeline on the test_video.mp4 and the full project_video.mp4.
 
-The jupyter notebook can be found here: [VehicleDetection.ipynb](https://github.com/jfoshea/VehicleDetection/blob/master/VehicleDetection.ipynb)
+The jupyter notebook can be found here: [VehicleDetection.ipynb](https://github.com/jfoshea/Vehicle-Detection/blob/master/VehicleDetection.ipynb)
 
 ### Training Data
 The training data was supplied as two zip files. I extacted the vehicle and non-vehicle into the local git repository and I extracted both sets of images into two lists within the jupyter notebook. There were 8972 images in vehicles and 8968 images in non-vehicles. I then plotted a random image from each data set as seen in cell 3.
@@ -29,10 +29,14 @@ The supplied test_images folder contains six images. I first draw_boxes routine 
 
 
 ### Heatmap and Bounding Boxes
-The sliding window and perspective_windows search identified the positions of positive detections and appended them to hot_windows for each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  Please see cell 15 which shows the pipeline visualization for all test images. An example of for test6.jpg is also shown here: ![ test6.jpg heatmap and bounding boxes][https://github.com/jfoshea/Vehicle-Detection/blob/master/writeup_images/pipeline_stages.png]
+The sliding window and perspective_windows search identified the positions of positive detections and appended them to hot_windows for each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  Please see cell 15 which shows the pipeline visualization for all test images. 
+An example of for test6.jpg is also shown here: ![Alt text](writeup_images/pipeline_stages.jpg "test image 6 pipeline stages")
 
 ### Video Implementation
-The output videos are: [output_test_video_out.mp4] (https://github.com/jfoshea/Vehicle-Detection/blob/master/output_test_video.mp4) [output_project_video.mp4] (https://github.com/jfoshea/Vehicle-Detection/blob/master/output_project_video.mp4)
+The output videos can be found here: 
+
+[output_test_video.mp4] (https://github.com/jfoshea/Vehicle-Detection/blob/master/output_test_video.mp4)
+[output_project_video.mp4] (https://github.com/jfoshea/Vehicle-Detection/blob/master/output_project_video.mp4)
 
 ### Conclusion
 This was a very interesting project. I spent a lot of time experimenting with trying different color spaces and HOG parameter selection in order to classify images with high accuracy. As mentioned in the writeup I ended up selecting YCrCb as the color space of choice. Testing the slide windows and perspective windows in paricular were also time consuming. In many instances I got many false detections and ended up with bounding boxes all over the screen. By changing the percent overlap and searching using multiple perspective window scales helped focus in on largely positive detections, but searching using multi-scale windows increases the compute time. I noticed that most of the images are in the daytime, it would be intersting to see if the pipeline would work or fail miserably in low light conditions. I also noticed the data set consisted mainly of cars, I didnt notice any trucks or busses in the data set when randonly running the car feature visualization cell.
